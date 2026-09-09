@@ -8,10 +8,11 @@ set $term alacritty
 
 # Font for window titles & fallback
 font pango:JetBrainsMono Nerd Font 10
-
-# Gaps & Borders
 gaps inner 8
 gaps outer 0
+gaps top 60
+
+# Gaps & Borders
 default_border pixel 2
 default_floating_border pixel 2
 hide_edge_borders smart
@@ -130,7 +131,12 @@ for_window [class="TelegramDesktop" title="Telegram"] floating enable
 bindsym $mod+c exec --no-startup-id code
 bindsym $mod+o exec --no-startup-id obsidian
 bindsym $mod+t exec --no-startup-id telegram-desktop
-bindsym $mod+Shift+b exec --no-startup-id helium-browser
+
+bindsym $mod+Shift+b exec --no-startup-id "helium-browser --enable-features=VaapiVideoDecoder,VaapiIgnoreDriverChecks --enable-gpu-rasterization --enable-zero-copy --ignore-gpu-blocklist"
+
+
+
+
 # Open Clipboard History in Rofi (Super + Shift + v)
 bindsym $mod+Shift+v exec --no-startup-id rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
 # Screenshots (Mod+Shift+S for interactive clip, Print for full screen)
@@ -154,7 +160,7 @@ exec --no-startup-id xsetroot -solid "#181825"
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock -c 1e1e2e
 exec_always --no-startup-id ~/.fehbg
 for_window [class=".*"] border pixel 3
-exec --no-startup-id greenclip daemon
+exec_always --no-startup-id greenclip daemon
 
 
 # ==============================================================================
