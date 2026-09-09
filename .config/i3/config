@@ -1,0 +1,168 @@
+# ==============================================================================
+# i3-wm Configuration - Catppuccin Mocha Workstation
+# Machine: Intel Core i3 Haswell / 16GB DDR3 / SATA SSD
+# ==============================================================================
+
+set $mod Mod4
+set $term alacritty
+
+# Font for window titles & fallback
+font pango:JetBrainsMono Nerd Font 10
+
+# Gaps & Borders
+gaps inner 8
+gaps outer 0
+default_border pixel 2
+default_floating_border pixel 2
+hide_edge_borders smart
+default_border pixel 3
+default_floating_border pixel 3
+for_window [class="^.*"] border pixel 3
+
+# class                 border   backgr.  text     indicator child_border
+client.focused          #89b4fa  #1e1e2e  #cdd6f4  #89b4fa   #89b4fa
+client.focused_inactive #181825  #181825  #6c7086  #181825   #181825
+client.unfocused        #11111b  #181825  #6c7086  #11111b   #11111b
+client.urgent           #f38ba8  #1e1e2e  #cdd6f4  #f38ba8   #f38ba8
+
+
+
+# Palette (Catppuccin Mocha)
+set $base    #1e1e2e
+set $surface #313244
+set $overlay #45475a
+set $text    #cdd6f4
+set $blue    #89b4fa
+set $red     #f38ba8
+
+# Window Color Mappings: border | background | text | indicator | child_border
+client.focused          $blue    $base $text $blue    $blue
+client.focused_inactive $surface $base $text $surface $surface
+client.unfocused        $surface $base $text $surface $surface
+client.urgent           $red     $base $text $red     $red
+
+# Core Keybindings
+bindsym $mod+Return exec $term
+bindsym $mod+d exec --no-startup-id rofi -show drun -show-icons
+bindsym $mod+q kill
+bindsym $mod+f fullscreen toggle
+bindsym $mod+Shift+space floating toggle
+
+# Navigation (Vim-style & Arrows)
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# Move Focused Window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# Layout Splitting
+bindsym $mod+b split h
+bindsym $mod+v split v
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# Workspaces Definition
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+
+bindsym $mod+Shift+1 move container to workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6
+
+# Dedicated Application Routing
+#assign [class="(?i)helium"]              workspace number $ws1
+#assign [class="Code"]                    workspace number $ws2
+#assign [class="obsidian"]                workspace number $ws3
+#assign [class="TelegramDesktop"]         workspace number $ws4
+#assign [class="(?i)discord"]             workspace number $ws4
+
+# Floating Rules for Dialogs & Media
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="bubble"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [window_role="Preferences"] floating enable
+for_window [window_type="dialog"] floating enable
+for_window [class="TelegramDesktop" title="Media viewer"] floating enable
+for_window [class="TelegramDesktop" title="Telegram"] floating enable
+
+# Quick Launchers
+bindsym $mod+c exec --no-startup-id code
+bindsym $mod+o exec --no-startup-id obsidian
+bindsym $mod+t exec --no-startup-id telegram-desktop
+
+# Screenshots (Mod+Shift+S for interactive clip, Print for full screen)
+bindsym $mod+Shift+s exec --no-startup-id maim -s | xclip -selection clipboard -t image/png
+bindsym Print exec --no-startup-id maim ~/Pictures/screenshot_$(date +%s).png
+
+# Media & Volume Keys (Pipewire / Pulseaudio)
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute        exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+
+# System Controls & Powermenu
+bindsym $mod+Shift+r restart
+bindsym $mod+Shift+e exec --no-startup-id ~/.config/rofi/powermenu.sh
+
+# Autostart Services
+exec_always --no-startup-id ~/.config/polybar/launch.sh
+exec_always --no-startup-id picom -b
+exec --no-startup-id dunst
+exec --no-startup-id xsetroot -solid "#181825"
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock -c 1e1e2e
+exec_always --no-startup-id ~/.fehbg
+for_window [class=".*"] border pixel 3
+
+
+
+# ==============================================================================
+# Keyboard Resize Mode (Super + r)
+# ==============================================================================
+bindsym $mod+r mode "resize"
+
+mode "resize" {
+    # Use Arrow keys or Vim keys (h, j, k, l) to resize
+    bindsym Left  resize shrink width 5 px or 5 ppt
+    bindsym Down  resize grow height 5 px or 5 ppt
+    bindsym Up    resize shrink height 5 px or 5 ppt
+    bindsym Right resize grow width 5 px or 5 ppt
+
+    bindsym h     resize shrink width 5 px or 5 ppt
+    bindsym j     resize grow height 5 px or 5 ppt
+    bindsym k     resize shrink height 5 px or 5 ppt
+    bindsym l     resize grow width 5 px or 5 ppt
+
+    # Exit resize mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+
+

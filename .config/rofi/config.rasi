@@ -1,0 +1,64 @@
+configuration {
+    modi: "drun,run,window";
+    lines: 7;
+    font: "JetBrainsMono Nerd Font 11";
+    show-icons: true;
+    terminal: "alacritty";
+    drun-display-format: "{icon} {name}";
+    display-drun: "Apps";
+    display-run: "Run";
+    display-window: "Window";
+}
+
+* {
+    bg-col:  #1e1e2e;
+    border-col: #89b4fa;
+    selected-col: #313244;
+    blue: #89b4fa;
+    fg-col: #cdd6f4;
+    fg-col2: #f38ba8;
+    background-color: @bg-col;
+}
+
+window {
+    width: 480px;
+    border: 2px;
+    border-color: @border-col;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+inputbar {
+    children: [prompt,entry];
+    padding: 6px;
+}
+
+prompt {
+    padding: 0px 8px 0px 0px;
+    text-color: @blue;
+}
+
+entry {
+    text-color: @fg-col;
+}
+
+listview {
+    lines: 8;
+    columns: 1;
+    padding: 8px 0px 0px 0px;
+}
+
+element {
+    padding: 6px;
+    border-radius: 4px;
+}
+
+element selected {
+    background-color: @selected-col;
+    text-color: @blue;
+}
+
+element-text, element-icon {
+    background-color: inherit;
+    text-color: inherit;
+}
