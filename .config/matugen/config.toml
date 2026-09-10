@@ -1,0 +1,10 @@
+[config]
+reload_apps = true
+
+[templates.polybar]
+input_path = '~/.config/matugen/templates/polybar-colors.ini'
+output_path = '~/.config/polybar/colors-matugen.ini'
+
+[templates.rofi]
+input_path = '~/.config/matugen/templates/rofi-colors.rasi'
+output_path = '~/.config/rofi/colors-matugen.rasi'
