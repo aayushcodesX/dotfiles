@@ -187,5 +187,3 @@ mode "resize" {
 
 
 
-exec_always --no-startup-id autotiling
-exec_always --no-startup-id autotiling

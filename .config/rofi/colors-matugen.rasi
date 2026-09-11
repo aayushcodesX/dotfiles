@@ -1,8 +1,0 @@
-* {
-    bg-col: #15130b;
-    border-col: #dac76f;
-    selected-col: #37352b;
-    blue: #dac76f;
-    fg-col: #e8e2d4;
-    grey: #cdc6b4;
-}
