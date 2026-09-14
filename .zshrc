@@ -1,7 +1,7 @@
 # ==============================================================================
 # ZSH Configuration - Fast, Predictive, Modern
 # ==============================================================================
-
+fastfetch
 # History Settings
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
@@ -56,3 +56,9 @@ alias tree='eza --tree --icons'
 alias dev='pnpm run dev'
 alias build='pnpm run build'
 alias ni='pnpm install'
+
+# Productivity Shortcuts
+alias lg='lazygit'
+alias y='yazi'
+alias top='btop'
+export PATH="$HOME/.local/bin:$PATH"

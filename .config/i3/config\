@@ -7,10 +7,10 @@ set $mod Mod4
 set $term alacritty
 
 # Font for window titles & fallback
-font pango:JetBrainsMono Nerd Font 8
+font pango:JetBrainsMono Nerd Font 10
 gaps inner 8
 gaps outer 0
-gaps top 40 
+gaps top 60
 
 # Gaps & Borders
 default_border pixel 2
@@ -136,7 +136,6 @@ for_window [class="TelegramDesktop" title="Media viewer"] floating enable
 for_window [class="TelegramDesktop" title="Telegram"] floating enable
 
 # Quick Launchers
-bindsym $mod+Shift+f exec --no-startup-id thunar
 bindsym $mod+c exec --no-startup-id code
 bindsym $mod+o exec --no-startup-id obsidian
 bindsym $mod+t exec --no-startup-id telegram-desktop
@@ -198,4 +197,3 @@ mode "resize" {
 
 exec_always --no-startup-id autotiling
 exec_always --no-startup-id autotiling
-

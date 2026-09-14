@@ -7,10 +7,10 @@ set $mod Mod4
 set $term alacritty
 
 # Font for window titles & fallback
-font pango:JetBrainsMono Nerd Font 8
+font pango:JetBrainsMono Nerd Font 10
 gaps inner 8
 gaps outer 0
-gaps top 40 
+gaps top 60
 
 # Gaps & Borders
 default_border pixel 2
@@ -88,9 +88,6 @@ bindsym $mod+v split toggle
 
 
 
-#exit i3
-bindsym $mod+Shift+x exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
-
 
 # Workspaces Definition
 set $ws1 "1: Terminal"
@@ -136,7 +133,6 @@ for_window [class="TelegramDesktop" title="Media viewer"] floating enable
 for_window [class="TelegramDesktop" title="Telegram"] floating enable
 
 # Quick Launchers
-bindsym $mod+Shift+f exec --no-startup-id thunar
 bindsym $mod+c exec --no-startup-id code
 bindsym $mod+o exec --no-startup-id obsidian
 bindsym $mod+t exec --no-startup-id telegram-desktop
@@ -144,7 +140,7 @@ bindsym $mod+t exec --no-startup-id telegram-desktop
 bindsym $mod+Shift+b exec --no-startup-id "helium-browser --enable-features=VaapiVideoDecoder,VaapiIgnoreDriverChecks --enable-gpu-rasterization --enable-zero-copy --ignore-gpu-blocklist"
 
 
-
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # Open Clipboard History in Rofi (Super + Shift + v)
 bindsym $mod+Shift+v exec --no-startup-id rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
@@ -198,4 +194,3 @@ mode "resize" {
 
 exec_always --no-startup-id autotiling
 exec_always --no-startup-id autotiling
-
